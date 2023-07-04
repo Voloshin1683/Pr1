@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main(){
+    // Оголошення змінних 
+    int t1,t2,t3;
+    // Введення даних користувачем
+    printf("t1\n");
+    scanf("%d",&t1);
+    printf("t2\n");
+    scanf("%d",&t2);
+    printf("t3\n");
+    scanf("%d",&t3);
+   
+    // Оголошення змінної (загальний час), підрахунок загального часу 
+    float sumarry_time = 1.0 / ((1.0 / t1) + (1.0 / t2) + (1.0 / t3));
+    // Виведення даних
+    printf("\n\tTime summary - %.2f hours", sumarry_time);
+    }
