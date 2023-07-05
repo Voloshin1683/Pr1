@@ -1,0 +1,38 @@
+#include <stdio.h>
+//Функція для обчислення НСД
+int diln(int a,int b){
+    if(b==0){
+        return a;
+    }
+    return diln(b,a%b);
+}
+//Функція для обчислення НСК
+int crat(int a,int b){
+    return(a*b)/diln(a,b);
+
+}
+ int main() {
+     int n;
+    printf("Введіть кількість чисел р: ");
+    //Вводимо кількість чисел
+    scanf("%d", &n);
+    //Додаємо умову
+    if (n>2&&n<20){
+
+    int arr[n];
+    printf("Введіть %d натуральних чисел: ", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+   //Присвоюємо res
+    int res = arr[0];
+    //Використовуємо функцію для НСК
+    for (int i=1;i<n;i++){
+    res=crat(res,arr[i]);
+    }
+    //Виведення результату
+    printf("Найменше кратне %d\n",res);
+    return 0;
+ } else printf("Error");
+
+ }
