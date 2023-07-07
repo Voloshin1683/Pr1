@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <string.h>
+// Функція для обміну значень
+void swap(char *x, char *y) {
+    char temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+}
+// Функція для  анаграм
+void Anagramgenerate(char *word, int start, int end, int *count) {
+    int i,Dupl;
+    if (start==end) {
+   
+    (*count)++;
+    }else{
+        for (i=start;i<=end;i++) {
+            //Перевіряємо використання символів
+            Dupl = 0;
+            for (int j = start; j < i; j++) {
+                if (word[j] == word[i]) {
+                    Dupl = 1;
+                    break;
+                }
+            }
+            if (Dupl) {
+            continue;
+            }
+            swap((word + start), (word + i)); // Свапаємо дві букви
+            Anagramgenerate(word, start + 1, end, count); 
+            swap((word + start), (word + i)); // Відновлюємо початковий порядок букв
+        }
+    }
+}
+int main() {
+    char word[14];
+    int count = 0;
+    //Вводимо слово
+    printf("Вставте слово: ");
+    scanf("%s", word);
+    //Знаходемо довжину слова
+    int length = strlen(word);
+    //Додаємо перевірку
+    if(length>14){printf("Помилка!");
+    }else{
+    //Використовуємо функцію для створення анограм
+    Anagramgenerate(word, 0, length - 1, &count);
+    //Виводимо кількість анограм
+    printf("Кількість ангаграм: %d\n", count);
+    return 0;
+}
+}
